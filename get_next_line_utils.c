@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:00:06 by tayou             #+#    #+#             */
-/*   Updated: 2023/01/25 16:37:14 by tayou            ###   ########.fr       */
+/*   Updated: 2023/01/26 05:56:36 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,19 @@ int	ft_strchr(char *string, int c)
 	return (-1);
 }
 
-char	*ft_strcpy(char *dst, char *src)
+char	*ft_strdup(char *src)
 {
-	int	i;
+	char	*dst;
+	int		src_size;
+	int		i;
 
-	if (dst == NULL || src == NULL)
-		return (dst);
+	if (src == NULL)
+		src_size = 0;
+	else
+		src_size = ft_strlen(src);
+	dst = (char *) malloc(sizeof(char) * src_size + 1);
+	if (dst == 0)
+		return (0);
 	i = 0;
 	while (src[i] != '\0')
 	{
@@ -56,7 +63,7 @@ char	*ft_strcpy(char *dst, char *src)
 	}
 	dst[i] = '\0';
 	return (dst);
-}	
+}
 
 char	*ft_strjoin(char *backup, char *buf)
 {

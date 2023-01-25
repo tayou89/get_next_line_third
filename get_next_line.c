@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 05:48:05 by tayou             #+#    #+#             */
-/*   Updated: 2023/01/25 16:57:53 by tayou            ###   ########.fr       */
+/*   Updated: 2023/01/26 06:23:28 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,22 +47,13 @@ char	*get_next_line(int fd)
 
 static char	*get_backup(char *backup, char *buf)
 {
-	int		buf_size;
-	char	*string;
-
 	if (buf == NULL)
 		return (NULL);
 	if (backup == NULL)
-	{
-		buf_size = ft_strlen(buf);
-		string = (char *) malloc(sizeof(char) * buf_size + 1);
-		if (string == NULL)
-			return (NULL);
-		string = ft_strcpy(backup, buf);
-	}
+		backup = ft_strdup(buf);
 	else
-		string = ft_strjoin(backup, buf);
-	return (string);
+		backup = ft_strjoin(backup, buf);
+	return (backup);
 }
 
 static char	*get_line(char *backup)
