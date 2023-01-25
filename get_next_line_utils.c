@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:00:06 by tayou             #+#    #+#             */
-/*   Updated: 2023/01/26 05:56:36 by tayou            ###   ########.fr       */
+/*   Updated: 2023/01/26 07:28:09 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,27 +42,26 @@ int	ft_strchr(char *string, int c)
 	return (-1);
 }
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(char *backup, char *buf)
 {
-	char	*dst;
-	int		src_size;
+	int		buf_size;
 	int		i;
 
-	if (src == NULL)
-		src_size = 0;
+	if (buf == NULL)
+		buf_size = 0;
 	else
-		src_size = ft_strlen(src);
-	dst = (char *) malloc(sizeof(char) * src_size + 1);
-	if (dst == 0)
+		buf_size = ft_strlen(buf);
+	backup = (char *) malloc(sizeof(char) * buf_size + 1);
+	if (backup == 0)
 		return (0);
 	i = 0;
-	while (src[i] != '\0')
+	while (buf[i] != '\0')
 	{
-		dst[i] = src[i];
+		backup[i] = buf[i];
 		i++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	backup[i] = '\0';
+	return (backup);
 }
 
 char	*ft_strjoin(char *backup, char *buf)
@@ -70,12 +69,10 @@ char	*ft_strjoin(char *backup, char *buf)
 	char	*new_backup;
 	int		backup_size;
 	int		buf_size;
-	int		total_size;
 
 	backup_size = ft_strlen(backup);
 	buf_size = ft_strlen(buf);
-	total_size = backup_size + buf_size;
-	new_backup = (char *) malloc(sizeof(char) * total_size + 1);
+	new_backup = (char *) malloc(sizeof(char) * (backup_size + buf_size) + 1);
 	if (new_backup == NULL)
 		return (NULL);
 	while (*backup != '\0')

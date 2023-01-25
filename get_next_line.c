@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 05:48:05 by tayou             #+#    #+#             */
-/*   Updated: 2023/01/26 06:23:28 by tayou            ###   ########.fr       */
+/*   Updated: 2023/01/26 07:26:06 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ char	*get_next_line(int fd)
 	free(buf);
 	line = get_line(backup);
 	backup = renewal_backup(backup);
-	if (backup == NULL)
-		return (NULL);
 	return (line);
 }
 
@@ -50,7 +48,7 @@ static char	*get_backup(char *backup, char *buf)
 	if (buf == NULL)
 		return (NULL);
 	if (backup == NULL)
-		backup = ft_strdup(buf);
+		backup = ft_strdup(backup, buf);
 	else
 		backup = ft_strjoin(backup, buf);
 	return (backup);
