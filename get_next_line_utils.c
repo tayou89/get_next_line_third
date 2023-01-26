@@ -6,7 +6,7 @@
 /*   By: tayou <tayou@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 15:00:06 by tayou             #+#    #+#             */
-/*   Updated: 2023/01/26 07:28:09 by tayou            ###   ########.fr       */
+/*   Updated: 2023/01/27 05:06:50 by tayou            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ char	*ft_strjoin(char *backup, char *buf)
 		new_backup++;
 	}
 	*new_backup = '\0';
+	free(backup - backup_size);
 	return (new_backup - backup_size - buf_size);
 }
 
@@ -111,5 +112,6 @@ char	*ft_substr(char *backup, int newline_point)
 		i++;
 	}
 	sub_string[j] = '\0';
+	free(backup);
 	return (sub_string);
 }
